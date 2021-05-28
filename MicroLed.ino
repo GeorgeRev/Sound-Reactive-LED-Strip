@@ -1,7 +1,7 @@
 #include <FastLED.h>
 
 #define LED_PIN 7
-#define READ_PIN A0
+#define READ_PIN A0                     // analogue pin of arduino nano
 
 #define NUM_LEDS      145
 #define BRIGHTNESS    255
@@ -21,11 +21,11 @@ void loop()
 {
   
   float soundstate = analogRead(READ_PIN);
-  int numLedsToLight = map(soundstate, 0, 1023, 0, NUM_LEDS);
+  int numLedsToLight = map(soundstate, 0, 1023, 0, NUM_LEDS);                   // mapping the values taken from the microphone to the number of available LEDs
   FastLED.clear();
   
   for(int led = 0; led < numLedsToLight; led++) { 
-    leds[led] = CRGB::Red; 
+    leds[led] = CRGB::Red;                                                      // colour of LEDs
   }
   FastLED.show();
 
